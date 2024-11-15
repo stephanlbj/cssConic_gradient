@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@property --deg{
+syntax: "<angle>";
+initial-value: 0deg;
+inherits: false;
+}
+
+body{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    width: 250px;
+    height: 400px;
+    background-color: gray;
+    position: relative;
+    
+}
+
+.card::after, .card::before{
+    position: absolute;
+    content: "";
+    inset: -.5rem;
+    background-image: conic-gradient( from var(--deg), transparent 75%, blue, yellow);
+    z-index: -1;
+    animation: identifier 4s linear infinite;
+}
+.card::before{
+    filter: blur(1.5rem);
+}
+
+.card:hover{
+
+}
+
+@keyframes identifier {
+    from{
+        --deg: 0deg;
+    }
+    to{
+        --deg: 360deg;
+    }
+}
